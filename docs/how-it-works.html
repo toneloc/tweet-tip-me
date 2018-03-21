@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <title>TweetTip.me - Tip with crypto on Twitter</title>
+
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <meta name="keywords" content="bitcoin, wallet, multisig, multisignature, address, browser, segwit, javascript, js, broadcast, transaction, verify, decode" />
+  <meta name="description" content="Control Ethereum accounts via Twitter. Tips and more!" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<!--   <link rel="stylesheet" href="css/bootstrap.min.css" media="screen"> -->
+  <link rel="stylesheet" href="css/style.css" media="screen">
+  <link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.css">
+
+
+
+</head>
+
+<body>
+<div id="wrap">
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+     <a href="#home" class="navbar-brand" id="homeBtn"><img src="tw.gif" style="height:25px;margin-top:-5px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    
+  </button>
+
+  <div class="navbar-collapse collapse show" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" data-toggle="tab" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" data-toggle="tab" href="/how-it-works.html">How it works<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/smart-contract.html">Smart contract<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <span class="navbar-toggler-icon"></span>
+  </div>
+</nav>
+
+  <div id="content" class="container">
+
+    <noscript class="alert alert-danger center-block"><span class="glyphicon glyphicon-exclamation-sign"></span> This page uses javascript, please enable it to continue!</noscript>
+
+    
+    <div class="row">
+      <div class="col-md-10"><br><bR>
+        <h1>TweetTip.me</h1>
+        <h3>The easiest way to tip and fundraise with crypto</h3>
+        <br>
+        <p>TweetTip.me gives ownership of contract-controlled ether to the proven owners of Twitter accounts.</p>
+
+        <ol>
+          <li>Create a campagn by submitting a username to Etherem blockchain.</li>
+          <li>Your campaign is live! Get others to send money to the campaign</li>
+          <li>Get the receipient to claim by sending a tweet. More info below. 
+        </ol></p></li></ol>
+
+        <p>To claim a tip, follow these steps:
+            <ol><li>Publish a public tweet following this precise pattern "$addressOfContractToClaim,$addressToSendFundsTo"
+e.g. "0xFdA6118f7496eC899C31839dB12C66aA5e556003,0x627306090abab3a6e1400e9345bc60c78a8bef57"</li>
+              <li>Trigger claim() method on TweetWallet instance you are claiming, submmitting the status of the tweet above. (e.g. Status will look something like "948272796251914720")</li></ol></p>
+
+        <p>Created by Tony Klausing</p>
+
+      </div>
+    </div>
+
+
+    
+
+    </div>
+</div>
+
+</body>
+</html>

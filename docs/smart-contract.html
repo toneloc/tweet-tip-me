@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <title>TweetTip.me - Tip with crypto on Twitter</title>
+
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <meta name="keywords" content="bitcoin, wallet, multisig, multisignature, address, browser, segwit, javascript, js, broadcast, transaction, verify, decode" />
+  <meta name="description" content="Control Ethereum accounts via Twitter. Tips and more!" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<!--   <link rel="stylesheet" href="css/bootstrap.min.css" media="screen"> -->
+  <link rel="stylesheet" href="css/style.css" media="screen">
+  <link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.css">
+
+
+
+</head>
+
+<body>
+<div id="wrap">
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+     <a href="#home" class="navbar-brand" id="homeBtn"><img src="tw.gif" style="height:25px;margin-top:-5px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    
+  </button>
+
+  <div class="navbar-collapse collapse show" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" data-toggle="tab" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" data-toggle="tab" href="/how-it-works.html">How it works<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/smart-contract.html">Smart contract<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <span class="navbar-toggler-icon"></span>
+  </div>
+</nav>
+
+  <div id="content" class="container">
+
+    <noscript class="alert alert-danger center-block"><span class="glyphicon glyphicon-exclamation-sign"></span> This page uses javascript, please enable it to continue!</noscript>
+
+    
+    <div class="row">
+      <div class="col-md-10"><br><bR>
+        <h1>Smart contract and technical details</h1>
+        <h3>Distributed and auditable on the Etheruem blockchain</h3>
+        <br>
+        <p>TweetTip.me is currently operated on the Ropsten testnet</p>
+
+        <p>The motivation is to improve the state of private key management. Private key management is very painful for users, but key management by individuals is essential for decentralized P2P money. It will be difficult to improve upon security and convenience of identity-management already offered by tech giants, with conveniences such as 2-factor auth, machine-trained fraud detection techniques, human judgment, etc.</p>
+
+        <p>Therefore, a middle ground between personal ownership of keys and state-of-the-art security and ease of use will be useful. A potential solution is to offload key management to (1) smart contracts and (2) the regular-old security experts at the tech giants. The proposed solution in this repo uses Ethereum smart contracts relying on oraclize.it to do HTTP requests to prove ownership of online Twitter accounts.</p>
+
+        <p>Previous implementations of social media controlled crypto, such as at ChangeTip (aqui-hired by AirBnB in 2016) were good ideas, but in pratice were centralized. Transactions and verification was not on-chain, but in ChangeTip's databases. This implementation is slighlty more decentralized but still relies on an oracle</p>
+
+        <p>Numerous technical challenges remain. First, online (social media) accounts are often trusted third parties. This can be partially solved by using several accounts for verification, other websites hosted in different places, and requiring the accrual of a minimum multisignature threshold of approvals. A second concern is that Oraclize.it is also, to a very large extent, a trusted third party. However, Oraclize is used in several largescale distributed applications already. Perhaps new technologies will come along which can serve as a sort of lottery-based oracle service, diminishing the canonical role of any one oracle. The problem of oracles will not go away soon. Thirdly, SSL / TLS is very difficult to understand, and the concept of TLS Notary is still young. Finally, technical implementation challenges remain significant and Ethereum smart contract tools remain elementary. Oraclize's and another strings library were used. Parsing tools can go haywire and regular expression rendered useless upon site redesigns.</p>
+
+        <p>Created by Tony Klausing</p>
+
+      </div>
+    </div>
+
+
+    
+
+    </div>
+</div>
+
+</body>
+</html>

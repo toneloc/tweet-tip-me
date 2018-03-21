@@ -101,7 +101,8 @@ App = {
             }
 
             var account = accounts[0];
-            App.contracts.TweetWalletParent.deployed().then(function (instance) {
+	    var parentContractAddress = '0xf396316bd6de45dd85f8c465715798bf13c46e26';
+            App.contracts.TweetWalletParent.at(parentContractAddress).then(function (instance) {
                 tweetWalletParentInstance = instance;
                 return tweetWalletParentInstance.createTweetWallet(username);
             })

@@ -178,8 +178,9 @@ App = {
 
     getBalances: function () {
         var tweetWalletParentInstance;
-
-        App.contracts.TweetWalletParent.deployed()
+	var parentContractAddress = '0xf396316bd6de45dd85f8c465715798bf13c46e26';
+            
+        App.contracts.TweetWalletParent.at(parentContractAddress)
 
         .then(function (instance) {
 

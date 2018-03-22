@@ -21,6 +21,7 @@ App = {
 		if (error) {
 			alert('To use TweetTip.me, please connect to the Ethereum netowork using the MetaMask browser plugin.');
 		}
+	});
 
         return App.initContract();
 

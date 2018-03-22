@@ -16,6 +16,11 @@ App = {
             App.web3Provider = new Web3.providers.HttpProvider('http://127.0.0.1:9545');
             web3 = new Web3(App.web3Provider);
         }
+	    
+	web3.eth.getAccounts(function(error, accounts) { 
+		if (error) {
+			alert('To use TweetTip.me, please connect to the Ethereum netowork using the MetaMask browser plugin.');
+		}
 
         return App.initContract();
 

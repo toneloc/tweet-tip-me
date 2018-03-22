@@ -19,7 +19,7 @@ App = {
 	    
 	web3.eth.getAccounts(function(error, accounts) { 
 		if (error) {
-			alert('To use TweetTip.me, please connect to the Ethereum netowork using the MetaMask browser plugin.');
+			alert('It looks like you are not logged into the MetaMask browser plugin. To use TweetTip.me, please connect to the Ethereum network with Metamask, metamask.io');
 		}
 	});
 

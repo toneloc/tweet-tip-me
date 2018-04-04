@@ -17,6 +17,8 @@ App = {
             web3 = new Web3(App.web3Provider);
         }
 	    
+	console.log(usernameArray.toString());
+	    
 	web3.eth.getAccounts(function(error, accounts) { 
 		if (error) {
 			alert('It looks like you are not logged into the MetaMask browser plugin. To use TweetTip.me, please connect to the Ethereum network with Metamask, metamask.io');

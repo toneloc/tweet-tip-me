@@ -17,6 +17,7 @@ App = {
             web3 = new Web3(App.web3Provider);
         }
 	    
+	    LogData();
 	console.log(usernameArray2.toString());
 	    
 	web3.eth.getAccounts(function(error, accounts) { 

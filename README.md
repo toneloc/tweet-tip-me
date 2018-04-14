@@ -19,3 +19,4 @@ http://tweettip.me
 - hook up to Ropsten infura web socket for reads ✓
 - check to return Infura blockchain reads quicker
 - add HTTPS ✓
+- add languages and gas control

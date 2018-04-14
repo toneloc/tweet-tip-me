@@ -1,6 +1,8 @@
 # tweet-tip-me
 Offer crypto tips via Twitter. Initialized 8 March 2018.
 
+http://tweettip.me
+
 # ToDo
 - check for / connect to MetaMask provider when writing to blockchain
 - screenshot of accepting tweets
@@ -14,3 +16,6 @@ Offer crypto tips via Twitter. Initialized 8 March 2018.
 - better responsive header
 - email sign up form
 - interesting design
+- hook up to Ropsten infura web socket for reads ✓
+- check to return Infura blockchain reads quicker
+- add HTTPS ✓

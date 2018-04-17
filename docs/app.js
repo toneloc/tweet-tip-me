@@ -7,40 +7,11 @@ App = {
     },
 
     initWeb3: function () {
-        // if (typeof web3 !== 'undefined') {
-        //     App.web3Provider = web3.currentProvider;
-        //     web3 = new Web3(web3.currentProvider);
-        // } else {
-        //     // Set the provider you want from Web3.providers
-        //     App.web3Provider = new Web3.providers.HttpProvider('http://127.0.0.1:9545');
-        //     web3 = new Web3(App.web3Provider);
-        // }
-        
-        // web3.eth.getAccounts(function(error, accounts) { 
-        //     if (error) {
-        //         alert('It looks like you are not logged into the MetaMask browser plugin. To use TweetTip.me, please connect to the Ethereum network with Metamask, metamask.io');
-        //     }
-        // });         
-
         return App.initContract();
 
     },
 
     initContract: function () {
-        // Get the necessary contract artifact files and instantiate with truffle-contract.
-        // $.getJSON('TweetWallet.json', function (data) {
-        //     var TweetWalletArtifact = data;
-        //     App.contracts.TweetWallet = TruffleContract(TweetWalletArtifact);
-        //     // Set the provider for our contract.
-        //     App.contracts.TweetWallet.setProvider(App.web3Provider);
-        // });
-
-        // $.getJSON('TweetWalletParent.json', function (data) {
-        //     var TweetWalletParentArtifact = data;
-        //     App.contracts.TweetWalletParent = TruffleContract(TweetWalletParentArtifact);
-        //     App.contracts.TweetWalletParent.setProvider(App.web3Provider);
-        // });
-
         return App.bindEvents();
     },
 
@@ -87,35 +58,19 @@ App = {
         var username = $('#username').val();
 
         console.log('Username = ' + username);
-        var tweetWalletParentInstance;
 
-        web3.eth.getAccounts(function (error, accounts) {
-             if (error) {
-                alert('Please connect to the Ethereum mainnet with the MetaMask browser extension, or use a service such as MyEtherWallet.');
-            }
+        async function asyncCreateTweetWalletCall() {
+          var balances = await CreateTweetWallet(username); 
+    
+        // Add something like "Created - pls wait 5 min"
+          // After we vave all data and balances, then populate grid
+          // App.processArray(events, App.populateGrid);
 
-            if (accounts.length == 0) {
-                alert('Please connect to the Ethereum mainnet with the MetaMask browser extension, or use a service such as MyEtherWallet');
-                return;
-            } else {
-                var account = accounts[0];
-            }
+        };
 
-            var account = accounts[0];
-            App.contracts.TweetWalletParent.deployed().then(function (instance) {
-                tweetWalletParentInstance = instance;
-                return tweetWalletParentInstance.createTweetWallet(username);
-            })
-
-                .then(function (result) {
-                    alert('Smart contract created.');
-                    $('#balances-table').find("tr:gt(0)").remove();
-                    return App.getBalances();
-
-                }).catch(function (err) {
-                console.log(err.message);
-            });
-        });
+        asyncCreateTweetWalletCall();
+         
+       
     },
 
     handleClaim: function (event, button) {
@@ -125,27 +80,16 @@ App = {
         console.log(status);
         console.log(contractAddress);
 
-        var tweetWalletInstance;
+        async function asyncClaimCall() {
+        var balances = await ClaimEther(status, contractAddress); 
+            
+        };
 
-        web3.eth.getAccounts(function (error, accounts) {
-            if (error) {
-                console.log(error);
-            }
-
-            App.contracts.TweetWallet.at(contractAddress).then(function (instance) {
-                tweetWalletInstance = instance;
-
-                return tweetWalletInstance.claim(status);
-            }).then(function (result) {
-                alert('Transfer processed. Please allow several blocks to be mined and then re-check balances.');
-                $('#claimModal').modal('toggle');
-                $('#balances-table').find("tr:gt(0)").remove();
-                return App.getBalances();
-            }).catch(function (err) {
-                console.log(err.message);
-            });
-        });
+        asyncClaimCall();
+        
     },
+
+
 
     handleSend: function (event, button) {
         event.preventDefault();
@@ -279,22 +223,3 @@ $(function() {
     App.init();
   });
 });
-
-// +++++++++++++++++++++++++++
-// Main Ethereum Network
-// https://mainnet.infura.io/67HMqY7SLmu1MBybaX95 
-
-// Test Ethereum Network (Ropsten)
-// https://ropsten.infura.io/67HMqY7SLmu1MBybaX95 
-
-// Test Ethereum Network (Rinkeby)
-// https://rinkeby.infura.io/67HMqY7SLmu1MBybaX95 
-
-// Test Ethereum Network (Kovan)
-// https://kovan.infura.io/67HMqY7SLmu1MBybaX95 
-
-// IPFS Gateway
-// https://ipfs.infura.io 
-
-// IPFS RPC
-// https://ipfs.infura.io:5001 

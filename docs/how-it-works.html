@@ -3,16 +3,10 @@
 <head>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-   <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-   <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-  
- <script>
-   $(function() {
-     $( ".accordion" ).accordion();
-     $(".accordion").accordion({ header: "h3", collapsible: true, active: false ,heightStyle: "content" });
-   });
-   </script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
 
   <title>TweetTip.me - Tip with crypto on Twitter</title>
 
@@ -23,10 +17,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-<!--   <link rel="stylesheet" href="css/bootstrap.min.css" media="screen"> -->
-  <link rel="stylesheet" href="css/style.css" media="screen">
   <link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.css">
+
+
 
 </head>
 
@@ -48,9 +41,6 @@
       <li class="nav-item active">
         <a class="nav-link" data-toggle="tab" href="/how-it-works.html">How it works<span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/smart-contract.html">Smart contract<span class="sr-only">(current)</span></a>
-      </li>
     </ul>
     <span class="navbar-toggler-icon"></span>
   </div>
@@ -61,59 +51,180 @@
     <noscript class="alert alert-danger center-block"><span class="glyphicon glyphicon-exclamation-sign"></span> This page uses javascript, please enable it to continue!</noscript>
 
     
-    <div class="row">
-      <div class="col-md-10"><br><bR>
-        <h1>TweetTip.me</h1>
-        <h3>The easiest way to tip and fundraise with crypto</h3>
-        <br>
-        <p>TweetTip.me gives ownership of contract-controlled ether to the proven owners of Twitter accounts.</p>
-        
-         <div class="accordion">
-           <h3>If I start a fundraising campaign and someone does not accept my tip, can I get my money back?</h3>
-               <div>
-                 <p>Yes, so long as no one else also contributes to the campaign. If someone other than yourself contributes, only the person for whom the tip is intended my claim the ether. </p>
-               </div>
-           <h3>How do I start a fundraising campaign?</h3>
-               <div>
-                 <p>On the <a href="/">home page</a>, submit a Twitter name without the "@" symbol to the Ethereum blockchain using Metamask.</p>
-               </div>
-            <h3>What is MetaMask?</h3>
-               <div>
-                 <p>MetaMask is a browser extenstion (currently only available in Chrome) that allows you to keep track of your Ethereum keys.</p>
-               </div>
-           <h3>How do I keep track of my Ether?</h3>
-               <div>
-                 <p>With cryptocurrency, your money is represented by a really long number, your private key. Only you can keep your private key safe, either by printing it out, storage is very safely on different computers, or else using a service like Coinbase. We also recommend a service called <a href="https://myetherwallet.com">MyEtherWallet</a>.</p>
-               </div>
-            <h3>Can I get a report of how many tips I've received?</h3>
-               <div>
-                 <p>Check out the link next to your Twitter usename for the address of your fundraising contract.</p>
-               </div>
-           <h3>Where is the smart contract?</h3>
-               <div>
-                 <p>You may view the smart contract on Etherscan here - https://ropsten.etherscan.io/address/0xf396316bd6de45dd85f8c465715798bf13c46e26/p>
-               </div>
-         </div>
+   <div class="container">
+    <br />
+    <br />
+    <br />
 
-
-        <ol>
-          <li>Create a campagn by submitting a username to Etherem blockchain.</li>
-          <li>Your campaign is live! Get others to send money to the campaign</li>
-          <li>Get the receipient to claim by sending a tweet. More info below. 
-        </ol></p></li></ol>
-
-        <p>To claim a tip, follow these steps:
-            <ol><li>Publish a public tweet following this precise pattern "$addressOfContractToClaim,$addressToSendFundsTo"
-e.g. "0xFdA6118f7496eC899C31839dB12C66aA5e556003,0x627306090abab3a6e1400e9345bc60c78a8bef57"</li>
-              <li>Trigger claim() method on TweetWallet instance you are claiming, submmitting the status of the tweet above. (e.g. Status will look something like "948272796251914720")</li></ol></p>
-
-        <p>Created by Tony Klausing</p>
-
-      </div>
+    <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        This section contains a wealth of information, related to TweetTip.me. If you cannot find an answer to your question, make sure to contact us <a href="https://twitter.com/tweettipme">@TweetTipMe</a>.
     </div>
-  
+    <br>
+    <div class="panel-group" id="accordion">
+        <div class="h3">General questions</div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Is account registration required?</a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    Nope! You can interact 
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTen">If I start a fundraising campaign and someone does not accept my tip, can I get my money back?</a>
+                </h4>
+            </div>
+            <div id="collapseTen" class="panel-collapse collapse">
+                <div class="panel-body">
+                    Yes, so long as no one else also contributes to the campaign. If someone other than yourself contributes, only the person for whom the tip is intended my claim the ether.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEleven">How do I start a fundraising campaign?</a>
+                </h4>
+            </div>
+            <div id="collapseEleven" class="panel-collapse collapse">
+                <div class="panel-body">
+                    On the <a href="/">home page</a>, submit a Twitter name without the "@" symbol to the Ethereum blockchain using Metamask.
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="h3">Handling Ether</div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">How do I keep track of my Ether?</a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                    With cryptocurrency, your money is represented by a really long number, your private key. Only you can keep your private key safe, either by printing it out, storage is very safely on different computers, or else using a service like Coinbase. We also recommend a service called <a href="https://myetherwallet.com">MyEtherWallet</a>.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">I want to claim my Ether on TweetTip.me- what are the steps?</a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse">
+                <div class="panel-body">
+                    To claim a TweetTip, all you need to do is:
+                    <ol>
+                        <li>Publish a public tweet following this precise pattern with only the address where you want the money to be sent, like "0x627306090abab3a6e1400e9345bc60c78a8bef57" - do not include any quotation marks</li>
+                        <li>Press the "Claim Ether" button beside your TweetTip and paste in the status ID of the tweet that contains your address. Your status will look something like "948272796251914720")</li>
+                        <li>Submit this claiming transaction to the network using MetaMask or another service.li>
+                    </ol>
+                    If you don't have any Ether or an Ethereum wallet, contact us @TweetTipMe and we can help you get set up!
+                </div>
+                <div><hr></div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">Can I get a report of how many tips I've received?</a>
+                </h4>
+            </div>
+            <div id="collapseFive" class="panel-collapse collapse">
+                <div class="panel-body">
+                   Check out the link starting "0x" next to your Twitter usename for the address of your fundraising contract. Here you can check on the latest contributions. A total is also shown on the TweetTip.me homepage.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix">Why use TweetTip.me?</a>
+                </h4>
+            </div>
+            <div id="collapseSix" class="panel-collapse collapse">
+                <div class="panel-body">
+                    There are a number of ways to use TweetTip.me:
+                    <ul>
+                        <li>Anonymously tip people and organizations</li>
+                        <li>Air drop tokens and Ethereum (contact us)</li>
+                        <li>Get started with cryptocurrency in an easy-to-use way</li>
+                        <li>Pay for goods and services</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <br>
+       <div class="h3">Smart Contract and Technical Details</div>
+              <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <h4 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Is this operated on a smart contract?</a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                    Yes; you may view our smart contract <a href="https://ropsten.etherscan.io/address/0xf396316bD6DE45Dd85F8C465715798Bf13C46E26">here</a> on the Ropsten testnet.  
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">How does the smart contract work?</a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                    Each new TweetTip is created as a separate contract instance. The Twitter name is stored in state and when a tipee would like to claim his or her or their funds, the smart contract concatenates a URL to query and uses Oraclize to retrieve and verify the address to send the funds to.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">What is the background and motivation?</a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                  The motivation is to improve the state of private key management. Private key management is very painful for users, but key management by individuals is essential for decentralized P2P money. It will be difficult to improve upon security and convenience of identity-management already offered by tech giants, with conveniences such as 2-factor auth, machine-trained fraud detection techniques, human judgment, etc.
+
+                  Therefore, a middle ground between personal ownership of keys and state-of-the-art security and ease of use will be useful. A potential solution is to offload key management to (1) smart contracts and (2) the regular-old security experts at the tech giants. The proposed solution in this repo uses Ethereum smart contracts relying on oraclize.it to do HTTP requests to prove ownership of online Twitter accounts.
+
+                  Previous implementations of social media controlled crypto, such as at ChangeTip (aqui-hired by AirBnB in 2016) were good ideas, but in pratice were centralized. Transactions and verification was not on-chain, but in ChangeTip's databases. This implementation is slighlty more decentralized but still relies on an oracle
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">What is next?</a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                    Numerous technical challenges remain. First, online (social media) accounts are often trusted third parties. This can be partially solved by using several accounts for verification, other websites hosted in different places, and requiring the accrual of a minimum multisignature threshold of approvals. A second concern is that Oraclize.it is also, to a very large extent, a trusted third party. However, Oraclize is used in several largescale distributed applications already. Perhaps new technologies will come along which can serve as a sort of lottery-based oracle service, diminishing the canonical role of any one oracle. The problem of oracles will not go away soon. Thirdly, SSL / TLS is very difficult to understand, and the concept of TLS Notary is still young. Finally, technical implementation challenges remain significant and Ethereum smart contract tools remain elementary. Oraclize's and another strings library were used. Parsing tools can go haywire and regular expression rendered useless upon site redesigns.
+                </div>
+            </div>
+        </div>
+            </div>
+</div>
     </div>
 </div>
+
+<br>
+<br>
+<br>
 
 </body>
 </html>

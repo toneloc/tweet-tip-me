@@ -65,15 +65,17 @@ App = {
 		  //   console.log("hd");
 	  	// });
 
-        $(document).on('click', '.open-claim-modal', function () {
-             // Populate
-            var username = $(this).closest('tr').find('td:eq(0)').text();
-            var address = $(this).closest('tr').find('td:eq(1)').text();
-            $('#username-fill > p').text( username );
-            $('#address-fill > p').text( address );
-            $("#open-claim-modal").toggle();
+//         $(document).on('click', '.open-claim-modal', function () {
+//              // Populate
+//             var username = $(this).closest('tr').find('td:eq(0)').text();
+//             var address = $(this).closest('tr').find('td:eq(1)').text();
+//             $('#username-fill > p').text( username );
+//             $('#address-fill > p').text( address );
+//             $("#open-claim-modal").toggle();
            
-        });
+//         });
+	    
+	    $(document).on('click', '.open-claim-modal', App.handleClaim);
 
         $(document).on('click', '.open-send-modal', function () {
             // Populate

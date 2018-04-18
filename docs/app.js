@@ -45,12 +45,8 @@ App = {
             $('#username-fill-2 > p').text( username );
             $('#address-fill-2 > p').text( address );
         });
-
-        // Wait so contracts can load ...
-        setTimeout(function () {
-            return App.getBalances();
-        }, 3000);
-
+        
+           return App.getBalances();
     },
 
     handleCreate: function (event) {

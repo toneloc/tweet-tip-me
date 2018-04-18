@@ -19,9 +19,11 @@ App = {
     	
         $(document).on('click', '#createButton', App.handleCreate);
 
-        $(document).on('click', '#submitClaim', function(event) {
-            App.handleClaim(event, $(this));
-        });
+//         $(document).on('click', '#submitClaim', function(event) {
+//             App.handleClaim(event, $(this));
+//         });
+
+        $(document).on('click', '#submitClaim', App.handleClaim);
 
         $(document).on('click', '#sendButton', function(event)
         {
@@ -203,15 +205,6 @@ App = {
 
     }, 
 
-
-    // populateBalances: function (addresses) {
-    //     var table = document.getElementById("balances-table");
-    //     var rows = tbody.getElementsByTagName("tr");​​​​​​​​​
-
-    //     for (i=0, i< addresses.length, i++) {
-    //         balanceCell.innerHTML = formattedAsEth.toString();
-    //     }
-    // }
 }
 
 $(function() {

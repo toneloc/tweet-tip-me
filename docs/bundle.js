@@ -36948,7 +36948,7 @@ window.ClaimEther = function claimEther(statusID, contractAddress) {
             
         var contract = new web3.eth.Contract(abi,contractAddress, {from: account});
 
-        contract.methods.claim(status).send({from: account, value:1000000000000000}	)
+        contract.methods.claim(status).send({from: account}	)
             .on('error', function(error){ alert('Your transaction had an error :( Here is some more information - ' +  error); })
             .on('transactionHash', function(transactionHash){ alert('Your transaction is processing with transaction ID - ' +  transactionHash);})
             .then(function(newContractInstance){

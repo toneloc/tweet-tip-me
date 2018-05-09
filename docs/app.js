@@ -7,6 +7,7 @@ App = {
     },
 
     initWeb3: function () {
+        // Try to connect to MetaMask; if we can't add in a pop up.
         return App.initContract();
 
     },
@@ -18,10 +19,6 @@ App = {
     bindEvents: function () {
     	
         $(document).on('click', '#createButton', App.handleCreate);
-
-//         $(document).on('click', '#submitClaim', function(event) {
-//             App.handleClaim(event, $(this));
-//         });
 
         $(document).on('click', '#submitClaim', App.handleClaim);
 
@@ -60,15 +57,10 @@ App = {
         async function asyncCreateTweetWalletCall() {
           var balances = await CreateTweetWallet(username); 
     
-        // Add something like "Created - pls wait 5 min"
-          // After we vave all data and balances, then populate grid
-          // App.processArray(events, App.populateGrid);
-
         };
 
         asyncCreateTweetWalletCall();
          
-       
     },
 
     handleClaim: function (event, button) {

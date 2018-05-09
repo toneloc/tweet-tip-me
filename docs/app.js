@@ -17,14 +17,12 @@ App = {
     },
 
     bindEvents: function () {
-    	
-        $(document).on('click', '#createButton', App.handleCreate);
-
-        $(document).on('click', '#submitClaim', App.handleClaim);
-
-        $(document).on('click', '#sendButton', function(event)
-        {
-            App.handleSend(event, $(this));
+        // $(document).on('click', '#createButton', App.handleCreate);
+        $(document).on('click', '.open-create-modal', function () {
+            var username = document.getElementById('username').value;
+            console.log(username);
+            $('#username-fill-6 > p').text( username );
+            $("#open-create-modal").toggle();
         });
 
         $(document).on('click', '.open-claim-modal', function () {
@@ -44,24 +42,32 @@ App = {
             $('#username-fill-2 > p').text( username );
             $('#address-fill-2 > p').text( address );
         });
+
+        $(document).on('click', '#submitClaim', App.handleClaim);
+
+        $(document).on('click', '#sendButton', function(event)
+        {
+            App.handleSend(event, $(this));
+        });
         
-           return App.getBalances();
+        return App.getBalances();
+
     },
 
-    handleCreate: function (event) {
-        event.preventDefault();
-        var username = $('#username').val();
+    // handleCreate: function (event) {
+    //     event.preventDefault();
+    //     var username = $('#username').val();
 
-        console.log('Username = ' + username);
+    //     // console.log('Username = ' + username);
 
-        async function asyncCreateTweetWalletCall() {
-          var balances = await CreateTweetWallet(username); 
+    //     // async function asyncCreateTweetWalletCall() {
+    //     //   var balances = await CreateTweetWallet(username); 
     
-        };
+    //     // };
 
-        asyncCreateTweetWalletCall();
+    //     // asyncCreateTweetWalletCall();
          
-    },
+    // },
 
     handleClaim: function (event, button) {
         event.preventDefault();
@@ -78,8 +84,6 @@ App = {
         asyncClaimCall();
         
     },
-
-
 
     handleSend: function (event, button) {
         event.preventDefault();

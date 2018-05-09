@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
    <link rel="stylesheet" href="css/style.css" media="screen">
-  <link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.css">
+   <link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.css">
 </head>
 
 <body>
@@ -43,11 +43,20 @@
 
     <div class="container">
     <br>
-    <div class="alert alert-dismissable alert-info" role="alert">
+    <div class="alert alert-dismissable alert-info" role="alert" id="help">
         <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        Hey there! Need help? Contact us <a href="https://twitter.com/tweettipme">@TweetTipMe.</a>
+        Hi there! Need help? Contact us <a href="https://twitter.com/tweettipme">@TweetTipMe.</a>
     </div>
-    
+    <div class="alert alert-dismissable alert-success" role="alert" id="infuraConnected" hidden="true">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        Connected to an Infura Ethereum node.
+    </div>
+   
+    <div class="alert alert-dismissable alert-danger" role="alert" id="infuraCouldNotConnect" hidden="true">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        Could not connect to Infura Ethereum Mainnet; try refreshing this page.</a>
+    </div>
+
     <div class="row">
       <div class="col-md-12"><br><bR>
         <h2>Send crypto donations to people and organizations with TweetTip.me</small></h2>
@@ -60,12 +69,20 @@
       <div class="col-6">
         <input type="text" id="username"  class="form-control addressTo" data-original-title="" title="" placeholder="Enter a Twitter username with no '@' symbol" autofocus>
         <br>
-        <a class="btn btn-primary btn-lg" id="createButton" role="button">Create fundraising campagin</a>
+        <a class="btn btn-primary btn-lg open-create-modal" id="createButton" role="button" data-toggle="modal" data-target="#createModal">Create fundraising campagin</a>
       </div>
     </div>
 
     <div class="container">
       <h3>Outstanding Fundraising Campaigns</h3>
+        <div class="alert alert-dismissable alert-success" role="alert" id="infuraGotBalances" hidden="true">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        Retrieved latest TweetTip.me bounty balances.</a>
+    </div>
+    <div class="alert alert-dismissable alert-danger" role="alert" id="infuraCouldNotGetBalances" hidden="true">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+         Could not connect to Infura Ethereum Mainnet to retrieve balances; try refreshing this page.</a>
+    </div>
       <div class="table-responsive">
         <table class="table" id="balances-table">
           <thead>
@@ -83,6 +100,49 @@
     </div>
 
   <!-- Modals -->
+  <div id="createModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Create a fundraising campaign on TweetTip.me</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <fieldset>
+              <div class="form-group">
+              <label class="col-sm-2 control-label"
+                     for="inputPassword44" >Username</label>
+              <div class="col-sm-10" id="username-fill-6">
+                <p id="inputPassword44" class="form-control-static"></p>
+              </div>
+              </div>
+              <div class="form-group">
+              <label  class="col-sm-8 control-label"
+                      for="amount-to-send">Optional endowment</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control"
+                       id="amount-to-send" placeholder="Amount in ether ...">
+                       <br>
+                       <small id="fileHelp" class="form-text text-muted">Pressing "Create campaign" will submit a transaction to MetaMask for final review and your approval.</small>
+              </div>
+             </div>
+
+              <div class="modal-footer">
+              <button type="submit" id="sendButton" class="btn btn-primary">Create campaign!</button>
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+            </fieldset>
+          </form>  
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <div id="claimModal" class="modal" role="dialog">
     <div class="modal-dialog">
             <div class="modal-content">
@@ -151,9 +211,9 @@
             <fieldset>
               <div class="form-group">
               <label class="col-sm-2 control-label"
-                     for="inputPassword3" >Username</label>
+                     for="inputPassword5" >Username</label>
               <div class="col-sm-10" id="username-fill-2">
-                <p id="inputPassword4" class="form-control-static"></p>
+                <p id="inputPassword5" class="form-control-static"></p>
               </div>
               </div>
               <div class="form-group">
@@ -186,22 +246,17 @@
     </div>
   </div>
 
-<!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="bundle.js"></script>
-    <script src="app.js"></script> -->
-        <script type="text/javascript" src="bundle.js"></script>
+  <script type="text/javascript" src="bundle.js"></script>
   <script src="app.js"></script>
   <script type="text/javascript">
     function googleTranslateElementInit() {
         new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
     }
-</script>
+  </script>
 
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</div>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </div>
 
 </body>
 </html>

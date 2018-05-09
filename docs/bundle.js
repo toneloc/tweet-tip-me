@@ -36822,12 +36822,25 @@ function extend() {
 }
 
 },{}],226:[function(require,module,exports){
+// Modals
+// #infuraConnected
+// #infuraGotBalances
+// #infuraCouldNotConnect
+// #infuraCouldNotGetBalances
+
 window.LogData = function getData() { 
 	results = [{}];
 
 	const Web3 = require('web3');
 
 	const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://ropsten.infura.io/ws'));
+	
+	if (web3 != 'undefined') {
+		$('#infuraConnected').attr("hidden", false);
+	} else {
+    	$('#infuraCouldNotConnect').attr("hidden", false);
+  	}
+	
 	var abi = [ { "constant": false, "inputs": [ { "name": "_username", "type": "string" } ], "name": "createTweetWallet", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "_username", "type": "string" }, { "indexed": false, "name": "_address", "type": "address" } ], "name": "TweetWalletCreated", "type": "event" } ];
 
 	var contract = new web3.eth.Contract(abi,'0x16336fdb880c8c5d00c41c11dbd3a729bfd622fc');
@@ -36845,12 +36858,45 @@ window.LogData = function getData() {
 	return new Promise(resolve => {
 	    setTimeout(() => {
 	      resolve(results);
-	    }, 1000);
+	    }, 2000);
 	  });
 
 }
 
 window.GetBalances = function getData(addresses) { 
+	const Web3 = require('web3');
+	const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://ropsten.infura.io/ws'));
+	
+	if (web3 != 'undefined') {
+		$('#infuraGotBalances').attr("hidden", false);
+	} else {
+    	$('#infuraCouldNotGetBalances').attr("hidden", false);
+  	}
+
+	var balances = [];
+
+	for (var i = 0; i < addresses.length; i++) {
+		web3.eth.getBalance(addresses[i], function(error, result){
+	    if(!error) {
+
+	    	var formattedAsEth = web3.utils.fromWei(result,'ether');
+	    	balances.push(formattedAsEth);
+	    }
+	    else {
+	    	// $('#help').hide();
+	        console.error(error);
+	    }
+	});
+	}
+
+	return new Promise(resolve => {
+	    setTimeout(() => {
+	      resolve(balances);
+	    }, 1000);
+  	});
+}
+
+window.GetSelf = function getData(addresses) { 
 	const Web3 = require('web3');
 	const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://ropsten.infura.io/ws'));
 	
@@ -36907,9 +36953,9 @@ window.CreateTweetWallet = function createTweetWallet(username) {
 
 		var contract = new web3.eth.Contract(abi,'0x16336fdb880c8c5d00c41c11dbd3a729bfd622fc', {from: account});
 
-        contract.methods.createTweetWallet(username).send({from: account})
-			.on('error', function(error){ alert('Your transaction had an error :( Here is some more information - ' +  error); })
-			.on('transactionHash', function(transactionHash){ alert('Your transaction is processing with transaction ID - ' +  transactionHash);})
+        contract.methods.createTweetWallet(username).send({from: account, gas:2205605})
+			.on('error', function(error){ alert('Shucks! This transaction had an error :( Here is some more technical information you can use to debug - ' +  error); })
+			.on('transactionHash', function(transactionHash){ alert('Your transaction is processing with transaction ID - ' +  transactionHash + '. Depending on how much gas you spent, it may take up to a few minutes for your payment to be processed. Refresh the page to check your TweetTip status, and review your transaction on EtherScan at the following URL – https://ropsten.etherscan.io/tx/' +  transactionHash);})
 			// .on('receipt', function(receipt){ alert('Your Tip has been registered on the blockchain at this contract address: ' + receipt.contractAddress) })
 			.then(function(newContractInstance){
 			    console.log(newContractInstance.options.address) 

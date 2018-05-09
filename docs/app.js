@@ -170,6 +170,16 @@ App = {
     },
 
     populateGrid: function (event) {
+        if (typeof event == 'undefined') {
+            $('#infuraConnected').attr("hidden", true);
+            $('#infuraCouldNotConnect').attr("hidden", false);
+        }
+
+        if (typeof event.returnValues.balance == 'undefined') {
+            $('#infuraGotBalances').attr("hidden", true);
+            $('#infuraCouldNotGetBalances').attr("hidden", false);
+        }
+
         var table = document.getElementById("balances-table");
 
         var row = table.insertRow();

@@ -36866,27 +36866,24 @@ window.LogData = function getData() {
 window.GetBalances = function getData(addresses) { 
 	const Web3 = require('web3');
 	const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://ropsten.infura.io/ws'));
-	
-	if (web3 != 'undefined') {
+
+	var balances = [];
+
+	for (var i = 0; i < addresses.length; i++) {
+		web3.eth.getBalance(addresses[i], function(error, result){
+	    if(!error && typeof result != 'undefined') {
+	    	var formattedAsEth = web3.utils.fromWei(result,'ether');
+	    	balances.push(formattedAsEth);
+	    }
+	    else {
+    		$('#infuraCouldNotGetBalances').attr("hidden", false);
+	        console.error(error);
+	        return;
+	    }
+
 		$('#infuraGotBalances').attr("hidden", false);
-	} else {
-    	$('#infuraCouldNotGetBalances').attr("hidden", false);
-  	}
 
-	var balances = [];
-
-	for (var i = 0; i < addresses.length; i++) {
-		web3.eth.getBalance(addresses[i], function(error, result){
-	    if(!error) {
-
-	    	var formattedAsEth = web3.utils.fromWei(result,'ether');
-	    	balances.push(formattedAsEth);
-	    }
-	    else {
-	    	// $('#help').hide();
-	        console.error(error);
-	    }
-	});
+		});
 	}
 
 	return new Promise(resolve => {
@@ -36896,30 +36893,30 @@ window.GetBalances = function getData(addresses) {
   	});
 }
 
-window.GetSelf = function getData(addresses) { 
-	const Web3 = require('web3');
-	const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://ropsten.infura.io/ws'));
+// window.GetSelf = function getData(addresses) { 
+// 	const Web3 = require('web3');
+// 	const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://ropsten.infura.io/ws'));
 	
-	var balances = [];
+// 	var balances = [];
 
-	for (var i = 0; i < addresses.length; i++) {
-		web3.eth.getBalance(addresses[i], function(error, result){
-	    if(!error) {
-	    	var formattedAsEth = web3.utils.fromWei(result,'ether');
-	    	balances.push(formattedAsEth);
-	    }
-	    else {
-	        console.error(error);
-	    }
-	});
-	}
+// 	for (var i = 0; i < addresses.length; i++) {
+// 		web3.eth.getBalance(addresses[i], function(error, result){
+// 	    if(!error) {
+// 	    	var formattedAsEth = web3.utils.fromWei(result,'ether');
+// 	    	balances.push(formattedAsEth);
+// 	    }
+// 	    else {
+// 	        console.error(error);
+// 	    }
+// 	});
+// 	}
 
-	return new Promise(resolve => {
-	    setTimeout(() => {
-	      resolve(balances);
-	    }, 1000);
-  	});
-}
+// 	return new Promise(resolve => {
+// 	    setTimeout(() => {
+// 	      resolve(balances);
+// 	    }, 1000);
+//   	});
+// }
 
 window.CreateTweetWallet = function createTweetWallet(username) { 
 	results = [{}];
@@ -36994,7 +36991,6 @@ window.ClaimEther = function claimEther(statusID, contractAddress) {
         var abi = [{"constant":false,"inputs":[{"name":"myid","type":"bytes32"},{"name":"result","type":"string"}],"name":"__callback","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"myid","type":"bytes32"},{"name":"result","type":"string"},{"name":"proof","type":"bytes"}],"name":"__callback","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"username","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"getUsername","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"refundOwner","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_statusId","type":"string"}],"name":"claim","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_username","type":"string"}],"payable":true,"stateMutability":"payable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"description","type":"string"}],"name":"newOraclizeQuery","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"tweetInfo","type":"string"}],"name":"newTweetInfo","type":"event"}];
             
         var contract = new web3.eth.Contract(abi,contractAddress, {from: account});
-
 
         contract.methods.claim(statusID).send({from: account}	)
             .on('error', function(error){ alert('Your transaction had an error :( Here is some more information - ' +  error); })

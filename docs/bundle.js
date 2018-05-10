@@ -36977,8 +36977,8 @@ window.ClaimEther = function claimEther(statusID, contractAddress) {
 
         contract.methods.claim(statusID).send({from: account}	)
             .on('error', function(error){ alert('Your transaction had an error :( Here is some more information - ' +  error); })
-            .on('transactionHash', function(transactionHash){ alert('Your transaction is processing with transaction ID - ' +  transactionHash);})
-            .then(function(newContractInstance){
+            .on('transactionHash', function(transactionHash){ alert('Your Claim Ether transaction is processing with transaction ID - ' +  transactionHash + '. Depending on how much gas you spent, it may take up to a few minutes for your claim to be processed. Refresh the page to check your transaction status, and review your transaction on EtherScan at the following URL – https://ropsten.etherscan.io/tx/' +  transactionHash);})
+            .then(function(){
                 console.log("got here") 
                 $('#claimModal').modal('toggle');
                 $('#balances-table').find("tr:gt(0)").remove();

@@ -105,8 +105,10 @@ App = {
 
             var send = web3.eth.sendTransaction({from: account, to: addressToSendTo, value: web3.toWei(amountToSend, "ether")},function(error, result) {
                     if (error) {
-                   console.log(error);
+                        console.log(error);
+                        console.log(result.toString);
                 } else {
+                    alert('Your transaction is processing with transaction ID - ' +  result + '. Depending on how much gas you spent, it may take up to a few minutes for your payment to be processed. Refresh the page to check your transaction status, and review your transaction on EtherScan at the following URL – https://ropsten.etherscan.io/tx/' +  result);
                     $('#balances-table').find("tr:gt(0)").remove();
                     $('#sendModal').modal('toggle');
                     return App.getBalances();

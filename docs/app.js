@@ -95,6 +95,7 @@ App = {
         var amountToSend = $('#amount-to-send').val();
 
         console.log(addressToSendTo);
+        console.log(amountToSend);
 
         web3.eth.getAccounts(function (error, accounts) {
             if (error) {
@@ -103,7 +104,7 @@ App = {
 
             account = accounts[0];
 
-            var send = web3.eth.sendTransaction({from: account, to: addressToSendTo, value: web3.toWei(amountToSend, "ether")},function(error, result) {
+            var send = web3.eth.sendTransaction({from: account, to: addressToSendTo, value: web3.toWei(amountToSend, "ether")}, function(error, result) {
                     if (error) {
                         console.log(error);
                         console.log(result.toString);

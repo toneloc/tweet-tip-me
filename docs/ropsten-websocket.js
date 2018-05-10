@@ -1,8 +1,18 @@
-// Modals
+// Alerts
+
+// Added - 
+
 // #infuraConnected
 // #infuraGotBalances
 // #infuraCouldNotConnect
 // #infuraCouldNotGetBalances
+
+// To Add -
+// #successfulCreate
+// #successfulGive
+// #successfulClaim
+
+// #
 
 window.LogData = function getData() { 
 	results = [{}];
@@ -67,7 +77,7 @@ window.GetBalances = function getData(addresses) {
   	});
 },
 
-window.CreateTweetWallet = function createTweetWallet(username) { 
+window.CreateTweetWallet = function createTweetWallet(username, amountToSend) { 
 	results = [{}];
 
 	console.log(username);
@@ -99,7 +109,7 @@ window.CreateTweetWallet = function createTweetWallet(username) {
 
 		var contract = new web3.eth.Contract(abi,'0x16336fdb880c8c5d00c41c11dbd3a729bfd622fc', {from: account});
 
-        contract.methods.createTweetWallet(username).send({from: account, gas:2205605})
+        contract.methods.createTweetWallet(username).send({from: account, gas:2205605, value: web3.toWei(amountToSend, "ether")})
 			.on('error', function(error){ alert('Shucks! This transaction had an error :( Here is some more technical information you can use to debug - ' +  error); })
 			.on('transactionHash', function(transactionHash){ alert('Your transaction is processing with transaction ID - ' +  transactionHash + '. Depending on how much gas you spent, it may take up to a few minutes for your payment to be processed. Refresh the page to check your TweetTip status, and review your transaction on EtherScan at the following URL – https://ropsten.etherscan.io/tx/' +  transactionHash);})
 			// .on('receipt', function(receipt){ alert('Your Tip has been registered on the blockchain at this contract address: ' + receipt.contractAddress) })

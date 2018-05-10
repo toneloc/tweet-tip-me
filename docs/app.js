@@ -58,12 +58,13 @@ App = {
     handleCreate: function (event) {
         event.preventDefault();
         var username = $('#username').val();
+        var amountToSend = $('#amount-to-send').val();
 
         console.log('Username = ' + username);
 
         async function asyncCreateTweetWalletCall() {
-          var balances = await CreateTweetWallet(username); 
-    
+          var balances = await CreateTweetWallet(username, amountToSend); 
+          $("#open-create-modal").toggle();
         };
 
         asyncCreateTweetWalletCall();

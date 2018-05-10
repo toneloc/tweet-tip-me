@@ -36822,11 +36822,21 @@ function extend() {
 }
 
 },{}],226:[function(require,module,exports){
-// Modals
+// Alerts
+
+// Added - 
+
 // #infuraConnected
 // #infuraGotBalances
 // #infuraCouldNotConnect
 // #infuraCouldNotGetBalances
+
+// To Add -
+// #successfulCreate
+// #successfulGive
+// #successfulClaim
+
+// #
 
 window.LogData = function getData() { 
 	results = [{}];
@@ -36889,34 +36899,9 @@ window.GetBalances = function getData(addresses) {
 	      resolve(balances);
 	    }, 1000);
   	});
-}
+},
 
-// window.GetSelf = function getData(addresses) { 
-// 	const Web3 = require('web3');
-// 	const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://ropsten.infura.io/ws'));
-	
-// 	var balances = [];
-
-// 	for (var i = 0; i < addresses.length; i++) {
-// 		web3.eth.getBalance(addresses[i], function(error, result){
-// 	    if(!error) {
-// 	    	var formattedAsEth = web3.utils.fromWei(result,'ether');
-// 	    	balances.push(formattedAsEth);
-// 	    }
-// 	    else {
-// 	        console.error(error);
-// 	    }
-// 	});
-// 	}
-
-// 	return new Promise(resolve => {
-// 	    setTimeout(() => {
-// 	      resolve(balances);
-// 	    }, 1000);
-//   	});
-// }
-
-window.CreateTweetWallet = function createTweetWallet(username) { 
+window.CreateTweetWallet = function createTweetWallet(username, amountToSend) { 
 	results = [{}];
 
 	console.log(username);
@@ -36948,7 +36933,7 @@ window.CreateTweetWallet = function createTweetWallet(username) {
 
 		var contract = new web3.eth.Contract(abi,'0x16336fdb880c8c5d00c41c11dbd3a729bfd622fc', {from: account});
 
-        contract.methods.createTweetWallet(username).send({from: account, gas:2205605})
+        contract.methods.createTweetWallet(username).send({from: account, gas:2205605, value: web3.toWei(amountToSend, "ether")})
 			.on('error', function(error){ alert('Shucks! This transaction had an error :( Here is some more technical information you can use to debug - ' +  error); })
 			.on('transactionHash', function(transactionHash){ alert('Your transaction is processing with transaction ID - ' +  transactionHash + '. Depending on how much gas you spent, it may take up to a few minutes for your payment to be processed. Refresh the page to check your TweetTip status, and review your transaction on EtherScan at the following URL – https://ropsten.etherscan.io/tx/' +  transactionHash);})
 			// .on('receipt', function(receipt){ alert('Your Tip has been registered on the blockchain at this contract address: ' + receipt.contractAddress) })

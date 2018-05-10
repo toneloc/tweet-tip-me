@@ -17,7 +17,6 @@ App = {
     },
 
     bindEvents: function () {
-        // $(document).on('click', '#createButton', App.handleCreate);
         $(document).on('click', '.open-create-modal', function () {
             var username = document.getElementById('username').value;
             console.log(username);
@@ -43,7 +42,9 @@ App = {
             $('#address-fill-2 > p').text( address );
         });
 
-        $(document).on('click', '#submitClaim', App.handleClaim);
+        $(document).on('click', '#createButton', App.handleCreate);
+
+        $(document).on('click', '#submitClaimButton', App.handleClaim);
 
         $(document).on('click', '#sendButton', function(event)
         {
@@ -54,20 +55,20 @@ App = {
 
     },
 
-    // handleCreate: function (event) {
-    //     event.preventDefault();
-    //     var username = $('#username').val();
+    handleCreate: function (event) {
+        event.preventDefault();
+        var username = $('#username').val();
 
-    //     // console.log('Username = ' + username);
+        console.log('Username = ' + username);
 
-    //     // async function asyncCreateTweetWalletCall() {
-    //     //   var balances = await CreateTweetWallet(username); 
+        async function asyncCreateTweetWalletCall() {
+          var balances = await CreateTweetWallet(username); 
     
-    //     // };
+        };
 
-    //     // asyncCreateTweetWalletCall();
+        asyncCreateTweetWalletCall();
          
-    // },
+    },
 
     handleClaim: function (event, button) {
         event.preventDefault();

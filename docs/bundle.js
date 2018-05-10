@@ -36881,8 +36881,6 @@ window.GetBalances = function getData(addresses) {
 	        return;
 	    }
 
-		$('#infuraGotBalances').attr("hidden", false);
-
 		});
 	}
 
@@ -36935,7 +36933,7 @@ window.CreateTweetWallet = function createTweetWallet(username) {
 
     web3.eth.getAccounts(function (error, accounts) {
          if (error) {
-            alert('It looks like you are not logged into the MetaMask browser plugin. To use TweetTip.me, please connect to the Ethereum network with Metamask, metamask.io');
+            alert('It looks like you are not logged into the MetaMask browser plugin. To use TweetTip.me, please   to the Ethereum network with Metamask, metamask.io');
         }
 
         if (accounts.length == 0) {

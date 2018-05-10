@@ -57,8 +57,6 @@ window.GetBalances = function getData(addresses) {
 	        return;
 	    }
 
-		$('#infuraGotBalances').attr("hidden", false);
-
 		});
 	}
 
@@ -67,32 +65,7 @@ window.GetBalances = function getData(addresses) {
 	      resolve(balances);
 	    }, 1000);
   	});
-}
-
-// window.GetSelf = function getData(addresses) { 
-// 	const Web3 = require('web3');
-// 	const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://ropsten.infura.io/ws'));
-	
-// 	var balances = [];
-
-// 	for (var i = 0; i < addresses.length; i++) {
-// 		web3.eth.getBalance(addresses[i], function(error, result){
-// 	    if(!error) {
-// 	    	var formattedAsEth = web3.utils.fromWei(result,'ether');
-// 	    	balances.push(formattedAsEth);
-// 	    }
-// 	    else {
-// 	        console.error(error);
-// 	    }
-// 	});
-// 	}
-
-// 	return new Promise(resolve => {
-// 	    setTimeout(() => {
-// 	      resolve(balances);
-// 	    }, 1000);
-//   	});
-// }
+},
 
 window.CreateTweetWallet = function createTweetWallet(username) { 
 	results = [{}];
@@ -111,7 +84,7 @@ window.CreateTweetWallet = function createTweetWallet(username) {
 
     web3.eth.getAccounts(function (error, accounts) {
          if (error) {
-            alert('It looks like you are not logged into the MetaMask browser plugin. To use TweetTip.me, please connect to the Ethereum network with Metamask, metamask.io');
+            alert('It looks like you are not logged into the MetaMask browser plugin. To use TweetTip.me, please   to the Ethereum network with Metamask, metamask.io');
         }
 
         if (accounts.length == 0) {

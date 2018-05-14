@@ -29,7 +29,7 @@ window.LogData = function getData() {
 	
 	var abi = [ { "constant": false, "inputs": [ { "name": "_username", "type": "string" } ], "name": "createTweetWallet", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "_username", "type": "string" }, { "indexed": false, "name": "_address", "type": "address" } ], "name": "TweetWalletCreated", "type": "event" } ];
 
-	var contract = new web3.eth.Contract(abi,'0x2c7d773bf32bba58d28c4835d6a5749a12f7262e');
+	var contract = new web3.eth.Contract(abi,'0xa6cbb076053dc71dfae5247e89b49e65107648ea');
 
 	contract.getPastEvents('allEvents',
 	    {fromBlock: 0,  toBlock: 'latest'},
@@ -107,7 +107,7 @@ window.CreateTweetWallet = function createTweetWallet(username, amountToSend) {
         var account = accounts[0];
 		var abi = [ { "constant": false, "inputs": [ { "name": "_username", "type": "string" } ], "name": "createTweetWallet", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "_username", "type": "string" }, { "indexed": false, "name": "_address", "type": "address" } ], "name": "TweetWalletCreated", "type": "event" } ];
 
-		var contract = new web3.eth.Contract(abi,'0x2c7d773bf32bba58d28c4835d6a5749a12f7262e', {from: account});
+		var contract = new web3.eth.Contract(abi,'0xa6cbb076053dc71dfae5247e89b49e65107648ea', {from: account});
 
         contract.methods.createTweetWallet(username).send({from: account, gas:2205605, value: web3.utils.toWei(amountToSend, "ether")})
 			.on('error', function(error){ alert('Shucks! This transaction had an error :( Here is some more technical information you can use to debug - ' +  error); })

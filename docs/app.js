@@ -194,7 +194,7 @@ App = {
         var claimCell = row.insertCell(3);
         var sendCell = row.insertCell(4);
 
-        var addressString = event.returnValues._address.toString();
+        var addressString = event.returnValues.newAddress.toString();
         var url = "https://ropsten.etherscan.io/address/" + addressString;
 
         var spanString = "<span> <a href=\'" + url + "\' target=\'_blank_\'>" + addressString + "</a> </span>";

@@ -36901,6 +36901,10 @@ window.GetBalances = function getData(addresses) {
 },
 
 window.CreateTweetWallet = function createTweetWallet(username, amountToSend) { 
+	if (amountToSend == '') {
+		amountToSend = 0;
+	}
+	
 	results = [{}];
 
 	console.log(username);

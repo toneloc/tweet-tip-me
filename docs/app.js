@@ -205,7 +205,7 @@ App = {
         balanceCell.innerHTML = "Loading ...";
         balanceCell.innerHTML = event.returnValues.balance;
 
-        var usernameString = event.returnValues._username;
+        var usernameString = event.returnValues.username;
         var url = "https://twitter.com/" + usernameString;
         var spanString2 = "<span> <a href=\'" + url + "\' target=\'_blank_\'>" + usernameString + "</a> </span>";
         

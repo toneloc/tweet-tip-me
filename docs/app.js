@@ -137,7 +137,7 @@ App = {
         /// Balance related code \/
         var addresses = [];
             for (var i = 0; i < events.length; i++) {
-            addresses.push(events[i].returnValues._address.toString());
+            addresses.push(events[i].returnValues.newAddress.toString());
         }
 
         async function asyncBalancesCall() {

@@ -32,7 +32,7 @@ contract TweetWalletFactory is CloneFactory {
     createClone(libraryAddress);
   }
 
-  function createTweetWallet(string _username) public payable {
+  function createTweetWallet(string _username) public {
     address clone = createClone(libraryAddress);
     TweetWallet(clone).init(_username);
     emit TweetWalletCreated(_username, clone);
@@ -1721,14 +1721,14 @@ contract TweetWallet is usingOraclize {
     }
 
     // This will only be called once, ever.
-    function TweetWallet(string _username) payable {
+    function TweetWallet(string _username) {
       username = "master";
       owner = msg.sender;
       initialEndowment = 0;
     }
 
     // This is the only function that can change state.
-    function init(string _username) payable {
+    function init(string _username) {
       require(bytes(username).length == 0); // ensure not init'd already.
       require(bytes(_username).length > 0);
 

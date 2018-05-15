@@ -63,7 +63,7 @@ App = {
         console.log('Username = ' + username);
 
         async function asyncCreateTweetWalletCall() {
-          var balances = await CreateTweetWallet(username, amountToSend); 
+          var balances = await CreateTweetWallet(username); 
           $("#open-create-modal").toggle();
         };
 

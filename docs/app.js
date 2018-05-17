@@ -132,7 +132,7 @@ App = {
           var events = await LogData(); 
 
         // For some reason, first item is blank
-        events.shift();
+        // events.shift();
 
         /// Balance related code \/
         var addresses = [];
@@ -171,6 +171,12 @@ App = {
                 setTimeout(arguments.callee, 25);
             }
         }, 25);
+
+        console.log("done");
+
+        // For each event
+        // get events from the address and see if it was claimed
+        // some how record that it was paid out by replacing the row
 
     },
 

@@ -146,7 +146,7 @@ App = {
           console.log("Balances" + balances);
           
           // Add balances back in to events array
-          for (i=-0; i < balances.length; i++) {
+          for (i=0; i < balances.length; i++) {
             events[i].returnValues.balance = balances[i];
           }
 

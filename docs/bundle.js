@@ -36895,7 +36895,7 @@ window.GetBalances = function getData(addresses) {
 	return new Promise(resolve => {
 	    setTimeout(() => {
 	      resolve(balances);
-	    }, 1000);
+	    }, 3500);
   	});
 },
 

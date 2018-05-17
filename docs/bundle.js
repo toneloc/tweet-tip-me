@@ -36842,7 +36842,7 @@ window.LogData = function getData() {
 
 	const Web3 = require('web3');
 
-	const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://mainnet.infura.io/ws'));
+	const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://mainnet.infura.io/_ws'));
 	
 	if (web3 != 'undefined') {
 		$('#infuraConnected').attr("hidden", false);
@@ -36873,7 +36873,7 @@ window.LogData = function getData() {
 
 window.GetBalances = function getData(addresses) { 
 	const Web3 = require('web3');
-	const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://mainnet.infura.io/ws'));
+	const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://mainnet.infura.io/_ws'));
 
 	var balances = [];
 

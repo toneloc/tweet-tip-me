@@ -132,7 +132,7 @@ App = {
           var events = await LogData(); 
 
         // For some reason, first item is blank
-        // events.shift();
+        events.shift();
 
         /// Balance related code \/
         var addresses = [];

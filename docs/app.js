@@ -120,7 +120,7 @@ App = {
     },
 
     getBalances: function () {
-      var parentContractAddress = '0xf396316bD6DE45Dd85F8C465715798Bf13C46E26';
+      var parentContractAddress = '0xb64c58e4bfdfaccf9821a11d894b8959e8e1df0f';
       $('#parent-contract-address').text(parentContractAddress);
 
       $('#my-token-balances').html("");
@@ -132,7 +132,7 @@ App = {
           var events = await LogData(); 
 
         // For some reason, first item is blank
-        events.shift();
+        // events.shift();
 
         /// Balance related code \/
         var addresses = [];

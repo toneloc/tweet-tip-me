@@ -36866,7 +36866,7 @@ window.LogData = function getData() {
 	return new Promise(resolve => {
 	    setTimeout(() => {
 	      resolve(results);
-	    }, 5000);
+	    }, 1500);
 	  });
 
 }

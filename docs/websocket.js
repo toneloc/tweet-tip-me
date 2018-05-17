@@ -42,7 +42,7 @@ window.LogData = function getData() {
 	return new Promise(resolve => {
 	    setTimeout(() => {
 	      resolve(results);
-	    }, 1500);
+	    }, 3500);
 	  });
 
 }

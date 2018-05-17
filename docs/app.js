@@ -128,19 +128,20 @@ App = {
       /////////////////////////////
       // Async on async on async :(
       async function asyncCall() {
-          console.log('calling');
-          var events = await LogData(); 
+        console.log('calling');
+        var events = await LogData(); 
 
         // For some reason, first item is blank
         events.shift();
 
-        /// Balance related code \/
-        var addresses = [];
-            for (var i = 0; i < events.length; i++) {
-            addresses.push(events[i].returnValues.newAddress.toString());
-        }
-
         async function asyncBalancesCall() {
+
+            /// Balance related code \/
+            var addresses = [];
+                for (var i = 0; i < events.length; i++) {
+                addresses.push(events[i].returnValues.newAddress.toString());
+            }  
+          
           var balances = await GetBalances(addresses); 
           console.log("Balances" + balances);
           

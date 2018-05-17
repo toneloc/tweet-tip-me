@@ -109,7 +109,7 @@ App = {
                         console.log(error);
                         console.log(result.toString);
                 } else {
-                    alert('Your transaction is processing with transaction ID - ' +  result + '. Depending on how much gas you spent, it may take up to a few minutes for your payment to be processed. Refresh the page to check your transaction status, and review your transaction on EtherScan at the following URL – https://ropsten.etherscan.io/tx/' +  result);
+                    alert('Your transaction is processing with transaction ID - ' +  result + '. Depending on how much gas you spent, it may take up to a few minutes for your payment to be processed. Refresh the page to check your transaction status, and review your transaction on EtherScan at the following URL – https://etherscan.io/tx/' +  result);
                     $('#balances-table').find("tr:gt(0)").remove();
                     $('#sendModal').modal('toggle');
                     return App.getBalances();
@@ -132,7 +132,7 @@ App = {
           var events = await LogData(); 
 
         // For some reason, first item is blank
-        // events.shift();
+        events.shift();
 
         /// Balance related code \/
         var addresses = [];
@@ -195,7 +195,7 @@ App = {
         var sendCell = row.insertCell(4);
 
         var addressString = event.returnValues.newAddress.toString();
-        var url = "https://ropsten.etherscan.io/address/" + addressString;
+        var url = "https://etherscan.io/address/" + addressString;
 
         var spanString = "<span> <a href=\'" + url + "\' target=\'_blank_\'>" + addressString + "</a> </span>";
 

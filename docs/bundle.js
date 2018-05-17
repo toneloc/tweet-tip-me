@@ -36842,7 +36842,7 @@ window.LogData = function getData() {
 
 	const Web3 = require('web3');
 
-	const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://ropsten.infura.io/ws'));
+	const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://mainnet.infura.io/ws'));
 	
 	if (web3 != 'undefined') {
 		$('#infuraConnected').attr("hidden", false);
@@ -36873,7 +36873,7 @@ window.LogData = function getData() {
 
 window.GetBalances = function getData(addresses) { 
 	const Web3 = require('web3');
-	const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://ropsten.infura.io/ws'));
+	const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://mainnet.infura.io/ws'));
 
 	var balances = [];
 
@@ -36932,7 +36932,7 @@ window.CreateTweetWallet = function createTweetWallet(username) {
 
         contract.methods.createTweetWallet(username).send({from: account})
 			.on('error', function(error){ alert('Shucks! This transaction had an error :( Here is some more technical information you can use to debug - ' +  error); })
-			.on('transactionHash', function(transactionHash){ alert('Your transaction is processing with transaction ID - ' +  transactionHash + '. Depending on how much gas you spent, it may take up to a few minutes for your payment to be processed. Refresh the page to check your TweetTip status, and review your transaction on EtherScan at the following URL – https://ropsten.etherscan.io/tx/' +  transactionHash);})
+			.on('transactionHash', function(transactionHash){ alert('Your transaction is processing with transaction ID - ' +  transactionHash + '. Depending on how much gas you spent, it may take up to a few minutes for your payment to be processed. Refresh the page to check your TweetTip status, and review your transaction on EtherScan at the following URL – https://etherscan.io/tx/' +  transactionHash);})
 			// .on('receipt', function(receipt){ alert('Your Tip has been registered on the blockchain at this contract address: ' + receipt.contractAddress) })
 			.then(function(newContractInstance){
 			    console.log(newContractInstance.options.address) 
@@ -36974,7 +36974,7 @@ window.ClaimEther = function claimEther(statusID, contractAddress) {
 
         contract.methods.claim(statusID).send({from: account}	)
             .on('error', function(error){ alert('Your transaction had an error :( Here is some more information - ' +  error); })
-            .on('transactionHash', function(transactionHash){ alert('Your Claim Ether transaction is processing with transaction ID - ' +  transactionHash + '. Depending on how much gas you spent, it may take up to a few minutes for your claim to be processed. Refresh the page to check your transaction status, and review your transaction on EtherScan at the following URL – https://ropsten.etherscan.io/tx/' +  transactionHash);})
+            .on('transactionHash', function(transactionHash){ alert('Your Claim Ether transaction is processing with transaction ID - ' +  transactionHash + '. Depending on how much gas you spent, it may take up to a few minutes for your claim to be processed. Refresh the page to check your transaction status, and review your transaction on EtherScan at the following URL – https://etherscan.io/tx/' +  transactionHash);})
             .then(function(){
                 console.log("got here") 
                 $('#claimModal').modal('toggle');

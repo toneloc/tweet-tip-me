@@ -134,14 +134,13 @@ App = {
         // For some reason, first item is blank
         events.shift();
 
-        async function asyncBalancesCall() {
-
-            /// Balance related code \/
+         /// Balance related code \/
             var addresses = [];
                 for (var i = 0; i < events.length; i++) {
                 addresses.push(events[i].returnValues.newAddress.toString());
             }  
-          
+
+        async function asyncBalancesCall() {          
           var balances = await GetBalances(addresses); 
           console.log("Balances" + balances);
           
@@ -185,9 +184,10 @@ App = {
         if (typeof event == 'undefined') {
             $('#infuraConnected').attr("hidden", true);
             $('#infuraCouldNotConnect').attr("hidden", false);
+            return;
         }
 
-        if (typeof event.returnValues.balance == 'undefined') {
+        if (typeof event.returnValues == 'undefined') {
             $('#infuraGotBalances').attr("hidden", true);
             $('#infuraCouldNotGetBalances').attr("hidden", false);
         }

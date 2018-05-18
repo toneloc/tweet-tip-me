@@ -36851,14 +36851,15 @@ window.LogData = function getData() {
   	}
 	
 	var abi = [ { "constant": false, "inputs": [ { "name": "_username", "type": "string" } ], "name": "createTweetWallet", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [], "name": "onlyCreate", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "libraryAddress", "outputs": [ { "name": "", "type": "address" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "inputs": [ { "name": "_libraryAddress", "type": "address" } ], "payable": false, "stateMutability": "nonpayable", "type": "constructor" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "username", "type": "string" }, { "indexed": false, "name": "newAddress", "type": "address" } ], "name": "TweetWalletCreated", "type": "event" }, { "anonymous": false, "inputs": [ { "indexed": true, "name": "target", "type": "address" }, { "indexed": false, "name": "clone", "type": "address" } ], "name": "CloneCreated", "type": "event" } ];
-	var contract = new web3.eth.Contract(abi,'0xb64c58e4bfdfaccf9821a11d894b8959e8e1df0f');
+	var contract = new web3.eth.Contract(abi,'0xb64C58e4BFDfACcF9821a11D894B8959E8e1DF0F');
 
-	contract.getPastEvents('allEvents',
-	    {fromBlock: 0,  toBlock: 'latest'},
+	contract.getPastEvents('TweetWalletCreated',
+	    {fromBlock: 5600021,  toBlock: 'latest'},
 	    (error, logs) => {
 	        if (error) console.error(error);
 	    }).then(function(logs){
 	    	logs.forEach(log => {
+	    		console.log(log);
 	            results.push(log);
 	        })    
 		});
@@ -36866,7 +36867,7 @@ window.LogData = function getData() {
 	return new Promise(resolve => {
 	    setTimeout(() => {
 	      resolve(results);
-	    }, 3500);
+	    }, 1000);
 	  });
 
 }
@@ -36895,7 +36896,7 @@ window.GetBalances = function getData(addresses) {
 	return new Promise(resolve => {
 	    setTimeout(() => {
 	      resolve(balances);
-	    }, 3500);
+	    }, 1000);
   	});
 },
 
@@ -36928,7 +36929,7 @@ window.CreateTweetWallet = function createTweetWallet(username) {
 
         var account = accounts[0];
 		var abi = [ { "constant": false, "inputs": [ { "name": "_username", "type": "string" } ], "name": "createTweetWallet", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [], "name": "onlyCreate", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "libraryAddress", "outputs": [ { "name": "", "type": "address" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "inputs": [ { "name": "_libraryAddress", "type": "address" } ], "payable": false, "stateMutability": "nonpayable", "type": "constructor" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "username", "type": "string" }, { "indexed": false, "name": "newAddress", "type": "address" } ], "name": "TweetWalletCreated", "type": "event" }, { "anonymous": false, "inputs": [ { "indexed": true, "name": "target", "type": "address" }, { "indexed": false, "name": "clone", "type": "address" } ], "name": "CloneCreated", "type": "event" } ];
-		var contract = new web3.eth.Contract(abi,'0xb64c58e4bfdfaccf9821a11d894b8959e8e1df0f', {from: account});
+		var contract = new web3.eth.Contract(abi,'0xb64C58e4BFDfACcF9821a11D894B8959E8e1DF0F', {from: account});
 
         contract.methods.createTweetWallet(username).send({from: account})
 			.on('error', function(error){ alert('Shucks! This transaction had an error :( Here is some more technical information you can use to debug - ' +  error); })
